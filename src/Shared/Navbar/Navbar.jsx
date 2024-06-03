@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 
@@ -16,11 +16,39 @@ const Navbar = () => {
     }
 
     const navoptins = <>
-        <li><Link to={'/'}>Home</Link></li>
-        <li><Link to={'/menu'}>Our Menu</Link></li>
-        <li><Link to={'/order/salad'}>Order Menu</Link></li>
-        <li><Link to={'/secret'}>Secret</Link></li>
-      
+        <li><NavLink
+            className={({ isActive }) =>
+                isActive ? 'text-green-500 font-bold ' : 'font-bold'
+            }
+            to='/'
+        >
+            Home
+        </NavLink></li>
+        <li><NavLink
+            className={({ isActive }) =>
+                isActive ? 'text-green-500 font-bold ' : 'font-bold'
+            }
+            to='/surveys'
+        >
+            Surveys
+        </NavLink></li>
+        <li><NavLink
+            className={({ isActive }) =>
+                isActive ? 'text-green-500 font-bold ' : 'font-bold'
+            }
+            to='/surveyDetails'
+        >
+            Survey Details
+        </NavLink></li>
+        <li><NavLink
+            className={({ isActive }) =>
+                isActive ? 'text-green-500 font-bold ' : 'font-bold'
+            }
+            to='/pricing'
+        >
+            Pricing
+        </NavLink></li>
+
         {
             user ?
                 <>
@@ -41,13 +69,13 @@ const Navbar = () => {
                         {navoptins}
                     </ul>
                 </div>
-                <Link to={'/'} className="btn btn-ghost text-xl uppercase font-cinzel">
+                <Link to={'/'} className="btn btn-ghost text-2xl font-bold  text-green-500 uppercase">
                     <div>
                         <p>Surveyz</p>
                     </div>
                 </Link>
             </div>
-            <div className="hidden lg:flex">
+            <div className="hidden lg:flex navbar-end">
                 <ul className="menu menu-horizontal px-1">
                     {navoptins}
                 </ul>
