@@ -29,7 +29,6 @@ const Login = () => {
                     title: 'Success!',
                     text: 'Login successfully',
                     icon: 'seccess',
-                    confirmButtonText: 'ok'
                 });
                 navigate(from, { replace: true });
             })

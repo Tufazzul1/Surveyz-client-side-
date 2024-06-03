@@ -18,7 +18,7 @@ const Navbar = () => {
     const navoptins = <>
         <li><NavLink
             className={({ isActive }) =>
-                isActive ? 'text-green-500 font-bold ' : 'font-bold'
+                isActive ? 'text-[#007BFF] font-bold ' : 'font-bold'
             }
             to='/'
         >
@@ -26,7 +26,7 @@ const Navbar = () => {
         </NavLink></li>
         <li><NavLink
             className={({ isActive }) =>
-                isActive ? 'text-green-500 font-bold ' : 'font-bold'
+                isActive ? 'text-[#007BFF] font-bold ' : 'font-bold'
             }
             to='/surveys'
         >
@@ -34,7 +34,7 @@ const Navbar = () => {
         </NavLink></li>
         <li><NavLink
             className={({ isActive }) =>
-                isActive ? 'text-green-500 font-bold ' : 'font-bold'
+                isActive ? 'text-[#007BFF] font-bold ' : 'font-bold'
             }
             to='/surveyDetails'
         >
@@ -42,7 +42,7 @@ const Navbar = () => {
         </NavLink></li>
         <li><NavLink
             className={({ isActive }) =>
-                isActive ? 'text-green-500 font-bold ' : 'font-bold'
+                isActive ? 'text-[#007BFF] font-bold ' : 'font-bold'
             }
             to='/pricing'
         >
@@ -59,7 +59,7 @@ const Navbar = () => {
         }
     </>
     return (
-        <div className="navbar z-10 max-w-7xl">
+        <div className="navbar z-50 bg-black text-white bg-opacity-30 fixed max-w-7xl ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -69,7 +69,7 @@ const Navbar = () => {
                         {navoptins}
                     </ul>
                 </div>
-                <Link to={'/'} className="btn btn-ghost text-2xl font-bold  text-green-500 uppercase">
+                <Link to={'/'} className="btn btn-ghost text-2xl font-bold  uppercase">
                     <div>
                         <p>Surveyz</p>
                     </div>
