@@ -99,7 +99,7 @@ const Register = () => {
             )
     }
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center pt-24">
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
                 <h2 className="mb-3 text-3xl font-semibold text-center">Sign up here</h2>
                 <p className="text-sm text-center dark:text-gray-600">Already have an account?

@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        railway: ["Raleway", 'sans-serif']
+        railway: ["Raleway", 'sans-serif'],
+        seymour: ["Seymour One", 'sans-serif']
       }
     },
   },

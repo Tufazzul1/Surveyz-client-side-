@@ -48,6 +48,14 @@ const Navbar = () => {
         >
             Pricing
         </NavLink></li>
+        <li><NavLink
+            className={({ isActive }) =>
+                isActive ? 'text-[#007BFF] font-bold ' : 'font-bold'
+            }
+            to='/dashboard/admin/users'
+        >
+            Dashboard
+        </NavLink></li>
 
         {
             user ?
@@ -71,7 +79,7 @@ const Navbar = () => {
                 </div>
                 <Link to={'/'} className="btn btn-ghost text-2xl font-bold  uppercase">
                     <div>
-                        <p>Surveyz</p>
+                        <p className="font-seymour text-[#007BFF]">Surveyz</p>
                     </div>
                 </Link>
             </div>
