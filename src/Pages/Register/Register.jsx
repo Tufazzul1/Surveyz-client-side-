@@ -3,13 +3,15 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 const Register = () => {
 
     const [showPassword, setShowPassword] = useState(false);
-    const { createUser, signInWithGoogle } = useAuth();
+    const { createUser, signInWithGoogle, updateUserProfile } = useAuth();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -20,6 +22,7 @@ const Register = () => {
         const password = form.password.value;
 
         console.log(name, email, photo, password);
+
         if (password.length < 6) {
             Swal.fire({
                 title: 'Error!',
@@ -45,35 +48,63 @@ const Register = () => {
                 icon: 'error',
                 confirmButtonText: 'ok'
             });
-            return
+            return;
         }
         createUser(email, password)
-            .then(result => {
-                console.log(result.user)
-                Swal.fire({
-                    title: 'Success!',
-                    text: "User created successfully",
-                    icon: 'success',
-                });
-                setTimeout(() => {
-                    navigate('/');
-                }, 2000);
+            .then((result) => {
+                console.log(result.user);
+                updateUserProfile(name, photo)
+                    .then(() => {
+                        const userInfo = {
+                            name: name,
+                            email: email,
+                            photo: photo
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database')
+                                    Swal.fire({
+                                        title: "Success!",
+                                        text: "User created and profile updated successfully",
+                                        icon: "success",
+                                    });
+                                    navigate("/");
+                                }
+                            })
+
+
+                    })
+                    .catch((error) => {
+                        console.error("Profile update failed:", error);
+
+                    });
             })
-            .catch(error => {
-                console.log(error.message)
+            .catch((error) => {
+                console.log(error.message);
                 Swal.fire({
-                    title: 'Error!',
+                    title: "Error!",
                     text: "Invalid email or password",
-                    icon: 'error',
-                    confirmButtonText: 'ok'
+                    icon: "error",
+                    confirmButtonText: "ok",
                 });
-            })
+            });
     }
 
     const handleSocialLogin = () => {
 
         signInWithGoogle()
             .then(result => {
+                const userInfo = {
+                    email: result?.user?.email,
+                    name: result?.user?.displayName,
+                    photo: result?.user?.photoURL
+
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data)
+                    })
                 console.log(result.user);
                 Swal.fire({
                     title: 'Success!',
@@ -81,11 +112,8 @@ const Register = () => {
                     icon: 'seccess',
                     confirmButtonText: 'ok'
                 });
-
-                setTimeout(() => {
-                    // navigate 
-                    navigate(location?.state ? location.state : '/');
-                }, 2000);
+                // navigate 
+                navigate(location?.state ? location.state : '/');
             })
             .catch(error => {
                 console.log(error)
