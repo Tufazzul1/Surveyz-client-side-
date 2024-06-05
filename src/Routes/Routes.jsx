@@ -7,12 +7,16 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Layout/Dashboard";
 import Users from "../Pages/Dashboard/Users/Users";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoutes";
+import Statistics from "../Pages/Dashboard/Statistics/Statistics";
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -30,12 +34,17 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard/admin',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
+            {
+                index: true,
+                element: <Statistics></Statistics>
+            },
             {
                 path: 'users',
                 element: <Users></Users>
-            }
+            },
         ]
     }
 ]);

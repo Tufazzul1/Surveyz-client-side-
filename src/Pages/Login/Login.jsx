@@ -26,10 +26,12 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
                 Swal.fire({
-                    title: 'Success!',
-                    text: 'Login successfully',
-                    icon: 'seccess',
-                });
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 navigate(from, { replace: true });
             })
     }
@@ -40,11 +42,12 @@ const Login = () => {
             .then(result => {
                 console.log(result.user);
                 Swal.fire({
-                    title: 'Success!',
-                    text: 'Login successfully',
-                    icon: 'seccess',
-                });
-
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 setTimeout(() => {
                     // navigate 
                     navigate(location?.state ? location.state : '/');

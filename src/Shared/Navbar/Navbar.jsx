@@ -52,7 +52,7 @@ const Navbar = () => {
             className={({ isActive }) =>
                 isActive ? 'text-[#007BFF] font-bold ' : 'font-bold'
             }
-            to='/dashboard/admin/users'
+            to='/dashboard/admin'
         >
             Dashboard
         </NavLink></li>

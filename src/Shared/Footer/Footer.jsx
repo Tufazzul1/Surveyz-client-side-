@@ -1,16 +1,26 @@
+import { CiLocationOn } from "react-icons/ci";
 import logoImage from "../../../public/checklist_2666505.png"
+import { IoCallOutline } from "react-icons/io5";
+import { MdOutlineMailOutline } from "react-icons/md";
 
 const Footer = () => {
     return (
         <footer className="px-4 divide-y dark:bg-gray-100 dark:text-gray-800">
             <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
                 <div className="lg:w-1/3">
-                    <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full dark:bg-violet-600">
-                            <img src={logoImage} />
-                        </div>
-                        <span className="self-center text-2xl font-seymour text-blue-500 font-bold">Surveyz</span>
-                    </a>
+                    <div>
+                        <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
+                            <div className="flex items-center justify-center w-8 h-8 rounded-full dark:bg-violet-600">
+                                <img src={logoImage} />
+                            </div>
+                            <span className="self-center text-2xl font-seymour text-blue-500 font-bold">Surveyz</span>
+                        </a>
+                    </div>
+                    <div className='space-y-4 mt-6'>
+                        <p><CiLocationOn className='text-xl' />07, Rose world Building, Street # 02, <br /> AT246T Sylhet</p>
+                        <p><IoCallOutline className='text-xl' />+8801795749543</p>
+                        <p><MdOutlineMailOutline className='text-xl' />tufajjul2017@gmail.com</p>
+                    </div>
                 </div>
                 <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
                     <div className="space-y-3">

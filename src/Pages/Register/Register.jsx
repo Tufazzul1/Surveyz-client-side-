@@ -65,10 +65,12 @@ const Register = () => {
                                 if (res.data.insertedId) {
                                     console.log('user added to the database')
                                     Swal.fire({
-                                        title: "Success!",
-                                        text: "User created and profile updated successfully",
+                                        position: "top-end",
                                         icon: "success",
-                                    });
+                                        title: "User created successfully",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                      });
                                     navigate("/");
                                 }
                             })
@@ -107,11 +109,12 @@ const Register = () => {
                     })
                 console.log(result.user);
                 Swal.fire({
-                    title: 'Success!',
-                    text: 'Login successfully',
-                    icon: 'seccess',
-                    confirmButtonText: 'ok'
-                });
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 // navigate 
                 navigate(location?.state ? location.state : '/');
             })
