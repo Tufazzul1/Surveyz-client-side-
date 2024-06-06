@@ -15,21 +15,21 @@ const Users = () => {
         }
     });
 
-    const handleMakeAdmin = user =>{
+    const handleChangeRole = user => {
         axiosSecure.patch(`/users/admin/${user._id}`)
-        .then(res => {
-            console.log(res.data)
-            if(res.data.modifiedCount > 0){
-                refetch();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${user.name} is an admin Now`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-        })
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${user.name} is an admin Now`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     }
 
     const handleDeleteUser = user => {
@@ -72,6 +72,7 @@ const Users = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>Edit Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -91,9 +92,15 @@ const Users = () => {
                                 </td>
                                 <td>{user?.name}</td>
                                 <td>{user?.email}</td>
+                                <td>{user?.role} </td>
                                 <td>
-                                    {user.role === 'admin' ? "Admin" : <button onClick={() => handleMakeAdmin(user)} className="btn bg-[#007BFF] p-2 text-white"><FaUsers /></button>}
+                                    <select onClick={() => handleChangeRole(user)} defaultValue={'Change Role'} id="">
+                                        <option value="Admin">Admin</option>
+                                        <option value="surveyor">Surveyor</option>
+                                    </select>
+
                                 </td>
+
                                 <td>
                                     <button onClick={() => handleDeleteUser(user)} className="btn bg-red-500 p-2 text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>

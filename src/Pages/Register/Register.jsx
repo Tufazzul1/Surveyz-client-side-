@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
@@ -11,6 +11,7 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { createUser, signInWithGoogle, updateUserProfile } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
     const axiosPublic = useAxiosPublic();
 
     const handleRegister = (event) => {
@@ -58,9 +59,10 @@ const Register = () => {
                         const userInfo = {
                             name: name,
                             email: email,
-                            photo: photo
+                            photo: photo,
+                            role: 'user'
                         }
-                        axiosPublic.post('/users', userInfo)
+                        axiosPublic.put('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     console.log('user added to the database')
@@ -70,7 +72,7 @@ const Register = () => {
                                         title: "User created successfully",
                                         showConfirmButton: false,
                                         timer: 1500
-                                      });
+                                    });
                                     navigate("/");
                                 }
                             })
@@ -100,23 +102,24 @@ const Register = () => {
                 const userInfo = {
                     email: result?.user?.email,
                     name: result?.user?.displayName,
-                    photo: result?.user?.photoURL
-
+                    photo: result?.user?.photoURL,
+                    role: 'user',
                 }
-                axiosPublic.post('/users', userInfo)
+                axiosPublic.put('/users', userInfo)
                     .then(res => {
                         console.log(res.data)
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Login successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        // navigate 
+                        navigate(location?.state ? location.state : '/');
                     })
                 console.log(result.user);
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Login successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                // navigate 
-                navigate(location?.state ? location.state : '/');
+
             })
             .catch(error => {
                 console.log(error)

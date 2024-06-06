@@ -5,7 +5,8 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
 
-    const isAdmin = true;
+    const isAdmin = false;
+    const isSurveyor = true;
     return (
         <div className="flex">
             <div className="w-[20%] min-h-screen bg-[#007BFF] text-white">
@@ -30,6 +31,18 @@ const Dashboard = () => {
                                     className={"flex gap-2"} to={'/dashboard/admin/paymentHistoy'}>
                                     <FaMoneyBill />
                                     Payment History
+                                </NavLink>
+                            </li>
+                        </ul>
+                    }
+
+                    {
+                        isSurveyor && <ul className="md:mt-10 md:pl-8">
+                            <li>
+                                <NavLink
+                                    className={"flex gap-2"} to={'/dashboard/admin/users'}>
+                                    <FaUsers />
+                                    All Users
                                 </NavLink>
                             </li>
                         </ul>

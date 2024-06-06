@@ -3,12 +3,14 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosPublic = useAxiosPublic;
     const from = location.state?.from?.pathname || '/';
 
     const { signIn, signInWithGoogle } = useAuth();
@@ -31,7 +33,7 @@ const Login = () => {
                     title: "Login successfully",
                     showConfirmButton: false,
                     timer: 1500
-                  });
+                });
                 navigate(from, { replace: true });
             })
     }
@@ -40,18 +42,27 @@ const Login = () => {
 
         signInWithGoogle()
             .then(result => {
+                const userInfo = {
+                    email: result?.user?.email,
+                    name: result?.user?.displayName,
+                    photo: result?.user?.photoURL,
+                    role: 'user',
+                }
+                axiosPublic.put('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Login successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        // navigate 
+                        navigate(location?.state ? location.state : '/');
+                    })
                 console.log(result.user);
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Login successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                setTimeout(() => {
-                    // navigate 
-                    navigate(location?.state ? location.state : '/');
-                }, 2000);
+
             })
             .catch(error => {
                 console.log(error)
