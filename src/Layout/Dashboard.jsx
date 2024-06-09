@@ -1,16 +1,18 @@
 import { FaHome, FaMoneyBill, FaNewspaper, FaUsers } from "react-icons/fa";
 import { TbListDetails } from "react-icons/tb";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hooks/useAdmin";
+import useSurveyor from "../Hooks/useSurveyor";
 
 
 const Dashboard = () => {
 
-    const isAdmin = false;
-    const isSurveyor = true;
+    const [isAdmin] = useAdmin();
+    const [isSurveyor] = useSurveyor();
     return (
         <div className="flex">
             <div className="w-[20%] min-h-screen bg-[#007BFF] text-white">
-                <h3 className="text-3xl text-center font-bold mt-6">Surveyz</h3>
+                <Link to={'/'} className="text-3xl text-center font-bold mt-6">Surveyz</Link>
                 <div>
                     {
                         isAdmin && <ul className="md:mt-10 md:pl-8">
@@ -40,9 +42,9 @@ const Dashboard = () => {
                         isSurveyor && <ul className="md:mt-10 md:pl-8">
                             <li>
                                 <NavLink
-                                    className={"flex gap-2"} to={'/dashboard/admin/users'}>
+                                    className={"flex gap-2"} to={'/dashboard/surveyor/addSurvey'}>
                                     <FaUsers />
-                                    All Users
+                                    Add Survey
                                 </NavLink>
                             </li>
                         </ul>

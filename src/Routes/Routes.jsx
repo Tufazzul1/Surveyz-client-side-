@@ -10,6 +10,10 @@ import Users from "../Pages/Dashboard/Users/Users";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoutes";
 import Statistics from "../Pages/Dashboard/Statistics/Statistics";
+import SurveysPage from "../Pages/SurveysPage/SurveysPage";
+import SurveyDetails from "../Pages/SurveyDetails/SurveyDetails";
+import Pricing from "../Pages/Pricing/Pricing";
+import AddSurvey from "../Pages/Dashboard/AddSurvey/AddSurvey";
 
 
 export const router = createBrowserRouter([
@@ -23,6 +27,18 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
+                path: "/surveys",
+                element: <SurveysPage></SurveysPage>
+            },
+            {
+                path: "/surveyDetails",
+                element: <SurveyDetails></SurveyDetails>
+            },
+            {
+                path: "/pricing",
+                element: <Pricing></Pricing>
+            },
+            {
                 path: "/login",
                 element: <Login></Login>
             },
@@ -32,6 +48,7 @@ export const router = createBrowserRouter([
             },
         ]
     },
+    // admin routes
     {
         path: 'dashboard/admin',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
@@ -45,6 +62,22 @@ export const router = createBrowserRouter([
                 path: 'users',
                 element: <Users></Users>
             },
+        ]
+    },
+    // surveyor routes
+    {
+        path: 'dashboard/surveyor',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
+            {
+                index: true,
+                element: <Statistics></Statistics>
+            },
+            {
+                path: 'addSurvey',
+                element: <AddSurvey></AddSurvey>
+            }
         ]
     }
 ]);

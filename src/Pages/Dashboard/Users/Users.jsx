@@ -15,21 +15,37 @@ const Users = () => {
         }
     });
 
-    const handleChangeRole = user => {
-        axiosSecure.patch(`/users/admin/${user._id}`)
+    // const handleChangeRole = user => {
+    //     axiosSecure.patch(`/users/admin/${user._id}`)
+    //         .then(res => {
+    //             console.log(res.data)
+    //             if (res.data.modifiedCount > 0) {
+    //                 refetch();
+    //                 Swal.fire({
+    //                     position: "top-end",
+    //                     icon: "success",
+    //                     title: `${user.name} is an admin Now`,
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                 });
+    //             }
+    //         })
+    // }
+
+    const handleChangeRole = (user, newRole) => {
+        axiosSecure.patch(`/users/role/${user._id}`, { role: newRole })
             .then(res => {
-                console.log(res.data)
                 if (res.data.modifiedCount > 0) {
                     refetch();
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: `${user.name} is an admin Now`,
+                        title: `${user.name} is now a ${newRole}`,
                         showConfirmButton: false,
                         timer: 1500
                     });
                 }
-            })
+            });
     }
 
     const handleDeleteUser = user => {
@@ -92,13 +108,18 @@ const Users = () => {
                                 </td>
                                 <td>{user?.name}</td>
                                 <td>{user?.email}</td>
-                                <td>{user?.role} </td>
+                                <td> <div className="badge bg-[#007BFFaf]">{user?.role}</div></td>
                                 <td>
-                                    <select onClick={() => handleChangeRole(user)} defaultValue={'Change Role'} id="">
-                                        <option value="Admin">Admin</option>
+                                    <select
+                                        onChange={(e) => handleChangeRole(user, e.target.value)}
+                                        defaultValue={user?.role || 'Change Role'}
+                                    >
+                                        <option value="Change Role" disabled>Change Role</option>
+                                        <option value="admin">Admin</option>
                                         <option value="surveyor">Surveyor</option>
+                                        <option value="pro-user">Pro-User</option>
+                                        <option value="user">User</option>
                                     </select>
-
                                 </td>
 
                                 <td>

@@ -10,7 +10,7 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    const axiosPublic = useAxiosPublic;
+    const axiosPublic = useAxiosPublic();
     const from = location.state?.from?.pathname || '/';
 
     const { signIn, signInWithGoogle } = useAuth();

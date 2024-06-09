@@ -5,7 +5,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 
 const Footer = () => {
     return (
-        <footer className="px-4 divide-y dark:bg-gray-100 dark:text-gray-800">
+        <footer className="px-4 md:px-10 divide-y dark:bg-gray-100 dark:text-gray-800 mt-16">
             <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
                 <div className="lg:w-1/3">
                     <div>
@@ -22,6 +22,7 @@ const Footer = () => {
                         <p><MdOutlineMailOutline className='text-xl' />tufajjul2017@gmail.com</p>
                     </div>
                 </div>
+                <div className="divider lg:divider-horizontal"></div> 
                 <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
                     <div className="space-y-3">
                         <h3 className="tracking-wide uppercase dark:text-gray-900">Product</h3>
