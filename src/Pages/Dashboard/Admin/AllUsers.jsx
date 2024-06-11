@@ -1,10 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import SectionTitle from "../../../Components/Sectiontitle/SectionTitle";
+import PagesHeader from "../../../Components/PagesHeader/PagesHeader";
 
 
-const Users = () => {
+const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
 
     const { data: users = [], refetch } = useQuery({
@@ -15,22 +18,6 @@ const Users = () => {
         }
     });
 
-    // const handleChangeRole = user => {
-    //     axiosSecure.patch(`/users/admin/${user._id}`)
-    //         .then(res => {
-    //             console.log(res.data)
-    //             if (res.data.modifiedCount > 0) {
-    //                 refetch();
-    //                 Swal.fire({
-    //                     position: "top-end",
-    //                     icon: "success",
-    //                     title: `${user.name} is an admin Now`,
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 });
-    //             }
-    //         })
-    // }
 
     const handleChangeRole = (user, newRole) => {
         axiosSecure.patch(`/users/role/${user._id}`, { role: newRole })
@@ -77,7 +64,13 @@ const Users = () => {
 
     return (
         <div>
-            <h2 className="text-2xl">Dashboard users {users.length}</h2>
+            <Helmet>
+                <title>Users | Dashboard</title>
+            </Helmet>
+            <PagesHeader
+            header={'All Users'}
+            >
+            </PagesHeader>
             <div className="overflow-x-auto p-4 md:p-10">
                 <table className="table table-zebra">
 
@@ -134,4 +127,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default AllUsers;

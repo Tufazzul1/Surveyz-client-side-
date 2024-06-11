@@ -39,16 +39,6 @@ const Navbar = () => {
                 className={({ isActive }) =>
                     isActive ? 'text-primary font-bold underline underline-offset-4' : 'font-bold'
                 }
-                to='/surveyDetails'
-            >
-                Survey Details
-            </NavLink>
-        </li>
-        <li>
-            <NavLink
-                className={({ isActive }) =>
-                    isActive ? 'text-primary font-bold underline underline-offset-4' : 'font-bold'
-                }
                 to='/pricing'
             >
                 Pricing

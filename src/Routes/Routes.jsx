@@ -6,14 +6,19 @@ import Main from "../Layout/Main";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Layout/Dashboard";
-import Users from "../Pages/Dashboard/Users/Users";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoutes";
 import Statistics from "../Pages/Dashboard/Statistics/Statistics";
 import SurveysPage from "../Pages/SurveysPage/SurveysPage";
 import SurveyDetails from "../Pages/SurveyDetails/SurveyDetails";
 import Pricing from "../Pages/Pricing/Pricing";
-import AddSurvey from "../Pages/Dashboard/AddSurvey/AddSurvey";
+import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
+import AddSurvey from "../Pages/Dashboard/Surveyor/AddSurvey";
+import AdminSurveys from "../Pages/Dashboard/Admin/AdminSurveys";
+import ViewPayments from "../Pages/Dashboard/Admin/ViewPayments";
+import UpdateSurvey from "../Pages/Dashboard/Surveyor/UpdateSurvey";
+import SurveyorDetails from "../Pages/Dashboard/Surveyor/SurveyorDetails";
+import Payment from "../Pages/Pricing/Payment";
 
 
 export const router = createBrowserRouter([
@@ -31,8 +36,9 @@ export const router = createBrowserRouter([
                 element: <SurveysPage></SurveysPage>
             },
             {
-                path: "/surveyDetails",
-                element: <SurveyDetails></SurveyDetails>
+                path: "/surveyDetails/:id",
+                element: <SurveyDetails></SurveyDetails>,
+                loader: ({ params }) =>fetch(`${import.meta.env.VITE_API_URL}/surveyDetails/${params.id}`),
             },
             {
                 path: "/pricing",
@@ -45,6 +51,10 @@ export const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register></Register>
+            },
+            {
+                path: '/payments',
+                element: <Payment></Payment>
             },
         ]
     },
@@ -60,7 +70,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'users',
-                element: <Users></Users>
+                element: <AllUsers></AllUsers>
+            },
+            {
+                path: 'serveys',
+                element: <AdminSurveys></AdminSurveys>
+            },
+            {
+                path: 'viewPayments',
+                element: <ViewPayments></ViewPayments>
             },
         ]
     },
@@ -77,6 +95,14 @@ export const router = createBrowserRouter([
             {
                 path: 'addSurvey',
                 element: <AddSurvey></AddSurvey>
+            },
+            {
+                path: 'updateSurveys',
+                element: <UpdateSurvey></UpdateSurvey>
+            },
+            {
+                path: 'surveyorDetails',
+                element: <SurveyorDetails></SurveyorDetails>
             }
         ]
     }
