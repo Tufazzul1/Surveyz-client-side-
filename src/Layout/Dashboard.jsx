@@ -4,13 +4,16 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useSurveyor from "../Hooks/useSurveyor";
 import { MdUpdate } from "react-icons/md";
+import useProUser from "../Hooks/useProUser";
+import useUser from "../Hooks/useUser";
 
 
 const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
     const [isSurveyor] = useSurveyor();
-    const isUser = true;
+    const [isProUser] = useProUser();
+    const [isUser] = useUser();
     return (
         <div className="flex">
             <div className="w-[20%] min-h-screen bg-[#007BFF] text-white">
@@ -67,9 +70,9 @@ const Dashboard = () => {
                             </li>
                         </ul>
                     }
-                    {/* normal user  */}
+                    {/*pro - normal user  */}
                     {
-                        isUser && 
+                        isProUser && 
                         <ul>
                             <li>
                                 <NavLink
@@ -85,6 +88,13 @@ const Dashboard = () => {
                                     Reported surveys    
                                 </NavLink>
                             </li>
+                        </ul>
+                    }
+
+                    {
+                        isUser && 
+                        <ul>
+                            
                         </ul>
                     }
                 </div>
@@ -105,13 +115,6 @@ const Dashboard = () => {
                                 className={"flex gap-2"} to={'/surveys'}>
                                 <FaNewspaper />
                                 Surveys
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                className={"flex gap-2"} to={'/surveyDetails'}>
-                                <TbListDetails />
-                                Survey Details
                             </NavLink>
                         </li>
                         <li>

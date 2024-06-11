@@ -19,6 +19,7 @@ import ViewPayments from "../Pages/Dashboard/Admin/ViewPayments";
 import UpdateSurvey from "../Pages/Dashboard/Surveyor/UpdateSurvey";
 import SurveyorDetails from "../Pages/Dashboard/Surveyor/SurveyorDetails";
 import Payment from "../Pages/Pricing/Payment";
+import Vote from "../Pages/SurveyDetails/Vote";
 
 
 export const router = createBrowserRouter([
@@ -38,7 +39,12 @@ export const router = createBrowserRouter([
             {
                 path: "/surveyDetails/:id",
                 element: <SurveyDetails></SurveyDetails>,
-                loader: ({ params }) =>fetch(`${import.meta.env.VITE_API_URL}/surveyDetails/${params.id}`),
+                loader: ({ params }) =>fetch(`http://localhost:5000/surveyDetails/${params.id}`),
+            },
+            {
+                path: "/votes/:id",
+                element: <Vote></Vote>,
+                loader: ({ params }) =>fetch(`http://localhost:5000/surveyDetails/${params.id}`),
             },
             {
                 path: "/pricing",

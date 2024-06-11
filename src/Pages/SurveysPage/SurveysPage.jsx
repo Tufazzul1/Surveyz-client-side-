@@ -112,7 +112,7 @@ const SurveysPage = () => {
                                 placeholder="Enter Survey Title"
                                 aria-label="Enter Survey Title"
                             />
-                            <button className="px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-[#007BFF] rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
+                            <button className="btn btn-outline btn-info">
                                 Search
                             </button>
                         </div>
@@ -135,26 +135,31 @@ const SurveysPage = () => {
                             <option value="asc">Ascending Order</option>
                         </select>
                     </div>
-                    <button onClick={handleReset} className="btn  bg-[#007BFF] text-white">
+                    <button onClick={handleReset} className="btn btn-outline btn-info">
                         Reset
                     </button>
                 </div>
 
                 {/* Display surveys */}
-                <div className="grid grid-cols-1 gap-6 mt-8 xl:mt-16 md:grid-cols-3">
+                <div className="grid grid-cols-1 gap-6 mt-8 xl:mt-16 md:grid-cols-3 p-6">
                     {isLoading ? (
                         <p>Loading</p>
                     ) : (
                         surveys.map((survey, index) => (
-                            <Link to={`/surveyDetails/${survey?._id}`} key={index}>
-                                <div className="card bg-base-100 shadow-xl">
+                            <div key={index}>
+                                <div className="card bg-base-200 border border-blue-400">
                                     <div className="card-body">
                                         <h2 className="card-title">{survey.title}</h2>
                                         <p>{survey.description}</p>
-                                        <h3>Total Vote : {survey.totalVotes}</h3>
+                                        <h3>Total Vote : {survey.voteCount || 0}</h3>
+                                        <Link to={`/surveyDetails/${survey?._id}`}>
+                                            <button className="btn btn-sm btn-outline btn-info">
+                                                View details
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
-                            </Link>
+                            </div>
                         ))
                     )}
                 </div>

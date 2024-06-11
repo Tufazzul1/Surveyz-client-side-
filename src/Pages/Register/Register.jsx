@@ -65,7 +65,7 @@ const Register = () => {
                         }
                         axiosPublic.put('/users', userInfo)
                             .then(res => {
-                                if (res.data.insertedId) {
+                                if (res.data) {
                                     console.log('user added to the database')
                                     Swal.fire({
                                         position: "top-end",
