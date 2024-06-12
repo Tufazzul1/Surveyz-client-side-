@@ -20,6 +20,7 @@ import UpdateSurvey from "../Pages/Dashboard/Surveyor/UpdateSurvey";
 import SurveyorDetails from "../Pages/Dashboard/Surveyor/SurveyorDetails";
 import Payment from "../Pages/Pricing/Payment";
 import Vote from "../Pages/SurveyDetails/Vote";
+import PerticipatedSurveys from "../Pages/Dashboard/User/PerticipatedSurveys";
 
 
 export const router = createBrowserRouter([
@@ -111,5 +112,21 @@ export const router = createBrowserRouter([
                 element: <SurveyorDetails></SurveyorDetails>
             }
         ]
-    }
+    },
+    // surveyor routes
+    {
+        path: 'dashboard/user',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
+            {
+                index: true,
+                element: <Statistics></Statistics>
+            },
+            {
+                path: 'serveys',
+                element: <PerticipatedSurveys></PerticipatedSurveys>
+            },
+        ]
+    },
 ]);

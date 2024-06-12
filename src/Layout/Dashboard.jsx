@@ -5,7 +5,7 @@ import useAdmin from "../Hooks/useAdmin";
 import useSurveyor from "../Hooks/useSurveyor";
 import { MdUpdate } from "react-icons/md";
 import useProUser from "../Hooks/useProUser";
-import useUser from "../Hooks/useUser";
+// import useUser from "../Hooks/useUser";
 
 
 const Dashboard = () => {
@@ -13,7 +13,7 @@ const Dashboard = () => {
     const [isAdmin] = useAdmin();
     const [isSurveyor] = useSurveyor();
     const [isProUser] = useProUser();
-    const [isUser] = useUser();
+    // const [isUser] = useUser();
     return (
         <div className="flex">
             <div className="w-[20%] min-h-screen bg-[#007BFF] text-white">
@@ -50,7 +50,7 @@ const Dashboard = () => {
                             <li>
                                 <NavLink
                                     className={"flex gap-2"} to={'/dashboard/surveyor/addSurvey'}>
-                                    <FaUsers />
+                                    <FaNewspaper />
                                     Add Survey
                                 </NavLink>
                             </li>
@@ -73,11 +73,11 @@ const Dashboard = () => {
                     {/*pro - normal user  */}
                     {
                         isProUser && 
-                        <ul>
+                        <ul className="md:mt-10 md:pl-8">
                             <li>
                                 <NavLink
                                     className={"flex gap-2"} to={'/dashboard/user/serveys'}>
-                                    <FaUsers />
+                                    <FaNewspaper />
                                     Participated surveys    
                                 </NavLink>
                             </li>
@@ -91,12 +91,18 @@ const Dashboard = () => {
                         </ul>
                     }
 
-                    {
+                    {/* {
                         isUser && 
                         <ul>
-                            
+                             <li>
+                                <NavLink
+                                    className={"flex gap-2"} to={'/dashboard/user/serveys'}>
+                                    <FaNewspaper />
+                                    Participated surveys    
+                                </NavLink>
+                            </li>
                         </ul>
-                    }
+                    } */}
                 </div>
 
                 <div className="divider"></div>

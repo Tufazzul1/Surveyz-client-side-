@@ -67,6 +67,7 @@ const CheckOutForm = () => {
             setTransactionId(paymentIntent.id);
 
             const payment = {
+                name: user?.name,
                 email: user?.email,
                 price: 9.99,
                 transactionId: paymentIntent.id,
