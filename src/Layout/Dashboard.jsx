@@ -5,7 +5,7 @@ import useAdmin from "../Hooks/useAdmin";
 import useSurveyor from "../Hooks/useSurveyor";
 import { MdUpdate } from "react-icons/md";
 import useProUser from "../Hooks/useProUser";
-// import useUser from "../Hooks/useUser";
+import useUser from "../Hooks/useUser";
 
 
 const Dashboard = () => {
@@ -13,7 +13,7 @@ const Dashboard = () => {
     const [isAdmin] = useAdmin();
     const [isSurveyor] = useSurveyor();
     const [isProUser] = useProUser();
-    // const [isUser] = useUser();
+    const [isUser] = useUser();
     return (
         <div className="flex">
             <div className="w-[20%] min-h-screen bg-[#007BFF] text-white">
@@ -90,9 +90,9 @@ const Dashboard = () => {
                             </li>
                         </ul>
                     }
-
-                    {/* {
-                        isUser && 
+                    
+                    {
+                        isUser  && 
                         <ul>
                              <li>
                                 <NavLink
@@ -102,7 +102,7 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                         </ul>
-                    } */}
+                    }
                 </div>
 
                 <div className="divider"></div>
