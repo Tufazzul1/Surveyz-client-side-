@@ -42,12 +42,12 @@ export const router = createBrowserRouter([
             {
                 path: "/surveyDetails/:id",
                 element: <SurveyDetails></SurveyDetails>,
-                loader: ({ params }) =>fetch(`http://localhost:5000/surveyDetails/${params.id}`),
+                loader: ({ params }) =>fetch(`https://surveyz-server.vercel.app/surveyDetails/${params.id}`),
             },
             {
                 path: "/votes/:id",
                 element: <Vote></Vote>,
-                loader: ({ params }) =>fetch(`http://localhost:5000/surveyDetails/${params.id}`),
+                loader: ({ params }) =>fetch(`https://surveyz-server.vercel.app/surveyDetails/${params.id}`),
             },
             {
                 path: "/pricing",
