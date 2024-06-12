@@ -96,8 +96,8 @@ const Vote = () => {
                 <title>Surveyz| Vote</title>
             </Helmet>
 
-            <div className="">
-                <div className=" text-black bg-blue-100  px-10 py-6 rounded-lg shadow-2xl">
+            <div className="flex justify-center items-center">
+                <div className=" text-black bg-gray-100 max-w-xl  px-10 py-6 rounded-lg shadow-2xl">
                     <div className="mt-3">
                         <h2 className="text-2xl font-bold">{category}</h2>
                     </div>
@@ -162,7 +162,7 @@ const Vote = () => {
                             <input
                                 type="submit"
                                 value="Submit"
-                                className="btn bg-green-500 text-white text-lg border-0 rounded-xl"
+                                className="btn w-full bg-green-500 text-white text-lg border-0 rounded-xl"
                             />
                         </form>
                     </div>

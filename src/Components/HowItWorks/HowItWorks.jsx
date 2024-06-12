@@ -3,7 +3,7 @@ import SectionTitle from "../Sectiontitle/SectionTitle";
 
 const HowItWorks = () => {
   return (
-    <section className="bg-gray-100">
+    <section className="bg-gray-100 p-6">
         <SectionTitle
          title={'How It Works'}
          subTitle={'Discover how easy it is to create, distribute, and analyze surveys with our user-friendly platform. Follow these steps to get started and unlock valuable insights in no time.'}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import SectionTitle from "../../../Components/Sectiontitle/SectionTitle";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 const LatestSurveys = () => {
 
@@ -34,35 +35,12 @@ const LatestSurveys = () => {
 
             <SectionTitle title={'Latest Surveys Section'}
                 subTitle={'Join the conversation with our latest surveys. Voice your opinion, share your thoughts, and see what others think about the most current topics. Your input matters!'}></SectionTitle>
-            {/* <div>
-        <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 ">
-          {latest.map((survey, index) => (
-            <div
-              key={index}
-              className="card h-auto min-h-[270px] text-black bg-[#f0faf4]"
-            >
-              <div className="card-body items-center text-center">
-                <h2 className="card-title">{survey.title}</h2>
-                <p>{survey.description}</p>
-                <h3 className="text-[#5C4033] text-lg ">
-                  Total Vote Count: ({survey?.voteCount || 0})
-                </h3>
-              </div>
-              <Link to={`/surveyDetails/${survey?._id}`}>
-                <button className="btn btn-primary b text-center block mb-6 mx-auto">
-                  View Details
-                </button>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div> */}
             <div>
-                <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3">
-                    {latest.map((survey, index) => (
+                <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 text-gray-500">
+                    {latest.slice(0, 6).map((survey, index) => (
                         <div
                             key={index}
-                            className="card h-auto min-h-[270px] text-black bg-white shadow-lg rounded-lg transform transition-all hover:scale-105 hover:shadow-xl"
+                            className="card h-auto min-h-[270px] bg-white shadow-lg rounded-lg transform transition-all hover:scale-105 hover:shadow-xl"
                         >
                             <div className="card-body p-6">
                                 <h2 className="card-title text-2xl font-bold mb-2">{survey.title}</h2>
@@ -72,10 +50,10 @@ const LatestSurveys = () => {
                                 <h3 className="text-[#5C4033] text-lg mb-4">
                                     Total Vote Count: <span className="font-semibold">{survey?.voteCount || 0}</span>
                                 </h3>
-                                <Link to={`/surveyDetails/${survey?._id}`}>
-                                    <button className="btn btn-primary w-full text-center">
-                                        View Details
-                                    </button>
+                                <Link className="link link-info inline-flex items-center" to={`/surveyDetails/${survey?._id}`}>
+                                    
+                                        View Details <FaArrowCircleRight className="ml-1" />
+                                    
                                 </Link>
                             </div>
                         </div>

@@ -6,7 +6,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import PagesHeader from "../../Components/PagesHeader/PagesHeader";
 
 const SurveysPage = () => {
-    const [itemsPerPage, setItemsPerPage] = useState(8);
+    const [itemsPerPage, setItemsPerPage] = useState(9);
     const [currentPage, setCurrentPage] = useState(1);
     const [count, setCount] = useState(0);
     const [filter, setFilter] = useState("");
@@ -207,7 +207,7 @@ const SurveysPage = () => {
                 <button
                     disabled={currentPage === numberOfPages}
                     onClick={() => handlePaginationButton(currentPage + 1)}
-                    className="px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-orange-500 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500"
+                    className="px-4 bg-[#007BFF] text-white rounded-md"
                 >
                     <div className="flex items-center -mx-1">
                         <span className="mx-1">Next</span>
