@@ -3,13 +3,13 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import SectionTitle from "../../../Components/Sectiontitle/SectionTitle";
 import PagesHeader from "../../../Components/PagesHeader/PagesHeader";
+import { useState } from "react";
 
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
-
+    const [filter, setFilter] = useState('all');
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
@@ -61,6 +61,7 @@ const AllUsers = () => {
             }
         });
     }
+    const filteredUsers = filter === 'all' ? users : users.filter(user => user.role === filter);
 
     return (
         <div>
@@ -68,9 +69,20 @@ const AllUsers = () => {
                 <title>Users | Dashboard</title>
             </Helmet>
             <PagesHeader
-            header={'All Users'}
-            >
-            </PagesHeader>
+                header={'All Users'}
+            ></PagesHeader>
+            <div className="flex justify-center my-4">
+                <div className="text-center">
+                    <select value={filter} onChange={(e) => setFilter(e.target.value)} className="btn btn-outline btn-info btn-sm">
+                        <option value="all">All</option>
+                        <option value="admin">Admins</option>
+                        <option value="surveyor">Surveyors</option>
+                        <option value="pro-user">Pro-Users</option>
+                        <option value="user">Users</option>
+                    </select>
+                </div>
+            </div>
+
             <div className="overflow-x-auto p-4 md:p-10">
                 <table className="table table-zebra">
 
@@ -87,7 +99,7 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) => <tr key={user._id}>
+                            filteredUsers.map((user, index) => <tr key={user._id}>
                                 <th>{index + 1}</th>
                                 <td>
                                     <div className="flex items-center gap-3">

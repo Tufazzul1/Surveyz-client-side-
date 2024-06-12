@@ -55,30 +55,34 @@ const SurveyComponent = () => {
                         <p className="mb-2">Status: <span className={`font-semibold ${survey.status === 'publish' ? 'text-green-600' : 'text-red-600'}`}>{survey.status}</span></p>
 
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Send Feedback</button>
+                        <button className="btn w-full btn-primary" onClick={() => document.getElementById('my_modal_1').showModal()}>Send Feedback</button>
                         <dialog id="my_modal_1" className="modal">
                             <div className="modal-box">
                                 <h3 className="font-bold text-lg">Send Your Feedback Here</h3>
                                 <textarea
                                     className="w-full border rounded p-2 mb-2"
                                     placeholder="Feedback"
+                                    required
                                     value={feedback}
                                     onChange={(e) => setFeedback(e.target.value)}
                                 />
+                                <button
+                                    onClick={() => handleStatusToggle(survey)}
+                                    className={`ml-3 py-2 px-4 rounded text-white ${survey.status === 'publish' ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'}`}
+                                >
+                                    {survey.status === 'publish' ? 'Unpublish' : 'Publish'}
+                                </button>
                                 <div className="modal-action">
                                     <form method="dialog">
                                         {/* if there is a button in form, it will close the modal */}
                                         <button className="btn">Close</button>
                                     </form>
                                 </div>
+
                             </div>
+
                         </dialog>
-                        <button
-                            onClick={() => handleStatusToggle(survey)}
-                            className={`ml-3 py-2 px-4 rounded text-white ${survey.status === 'publish' ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'}`}
-                        >
-                            {survey.status === 'publish' ? 'Unpublish' : 'Publish'}
-                        </button>
+
                     </div>
                 ))}
             </div>
