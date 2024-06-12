@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet";
 import HowItWorks from "../../../Components/HowItWorks/HowItWorks";
-import Footer from "../../../Shared/Footer/Footer";
 import Banner from "../Banner/Banner";
 import Faq from "../FAQ/FAQ";
+import LatestSurveys from "../LatestSurveys/LatesSurveys";
 
 
 const Home = () => {
@@ -12,6 +12,7 @@ const Home = () => {
                 <title>Home | Surveyz</title>
             </Helmet>
             <Banner></Banner>
+            <LatestSurveys></LatestSurveys>
             <HowItWorks></HowItWorks>
             <Faq></Faq>
         </div>
