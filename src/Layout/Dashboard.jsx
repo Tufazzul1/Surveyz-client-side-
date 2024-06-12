@@ -17,7 +17,7 @@ const Dashboard = () => {
     return (
         <div className="flex">
             <div className="w-[20%] min-h-screen bg-[#007BFF] text-white">
-                <Link to={'/'} className="text-3xl text-center font-bold mt-6">Surveyz</Link>
+                <Link to={'/'} className="text-3xl flex justify-center font-bold mt-6">Surveyz</Link>
                 <div>
                     {/* admin */}
                     {
@@ -88,17 +88,31 @@ const Dashboard = () => {
                                     Reported surveys    
                                 </NavLink>
                             </li>
+                            <li>
+                                <NavLink
+                                    className={"flex gap-2"} to={'/dashboard/user/commented'}>
+                                    <FaUsers />
+                                    Commented surveys    
+                                </NavLink>
+                            </li>
                         </ul>
                     }
                     
                     {
                         isUser  && 
-                        <ul>
+                        <ul className="md:mt-10 md:pl-8">
                              <li>
                                 <NavLink
                                     className={"flex gap-2"} to={'/dashboard/user/serveys'}>
                                     <FaNewspaper />
                                     Participated surveys    
+                                </NavLink>
+                            </li>
+                             <li>
+                                <NavLink
+                                    className={"flex gap-2"} to={'/dashboard/user/reported'}>
+                                    <FaNewspaper />
+                                    Reported surveys    
                                 </NavLink>
                             </li>
                         </ul>

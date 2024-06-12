@@ -21,6 +21,8 @@ import SurveyorDetails from "../Pages/Dashboard/Surveyor/SurveyorDetails";
 import Payment from "../Pages/Pricing/Payment";
 import Vote from "../Pages/SurveyDetails/Vote";
 import PerticipatedSurveys from "../Pages/Dashboard/User/PerticipatedSurveys";
+import CommentedSurveys from "../Pages/Dashboard/ProUser/CommentedSurveys";
+import ReportedSurveys from "../Pages/Dashboard/User/ReportedSurveys";
 
 
 export const router = createBrowserRouter([
@@ -113,7 +115,7 @@ export const router = createBrowserRouter([
             }
         ]
     },
-    // surveyor routes
+    // user routes
     {
         path: 'dashboard/user',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
@@ -126,6 +128,14 @@ export const router = createBrowserRouter([
             {
                 path: 'serveys',
                 element: <PerticipatedSurveys></PerticipatedSurveys>
+            },
+            {
+                path: 'reported',
+                element: <ReportedSurveys></ReportedSurveys>
+            },
+            {
+                path: 'commented',
+                element: <CommentedSurveys></CommentedSurveys>
             },
         ]
     },
