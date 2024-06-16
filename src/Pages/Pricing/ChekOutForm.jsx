@@ -92,29 +92,41 @@ const CheckOutForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+
+        <form className="max-w-3xl mx-auto" onSubmit={handleSubmit}>
+            <div className="flex justify-center mb-6">
+                <h2 className="text-xl font-bold">Please pay for primium membership</h2>
+            </div>
+            <div className="mb-4">
+                <CardElement
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
                             },
                         },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-            <button className="btn-sm btn-primary bg-red-500 my-4" type="submit" disabled={!stripe || !clientSecret}>
+                    }}
+                    className="p-3 border rounded-lg"
+                />
+            </div>
+            <button
+                className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-200"
+                type="submit"
+                disabled={!stripe || !clientSecret}
+            >
                 Pay
             </button>
-            {error && <p className="text-red-500">{error}</p>}
-            {transactionId && <p className="text-green-500">Your Transaction id: {transactionId}</p>}
+            {error && <p className="text-red-500 mt-2">{error}</p>}
+            {transactionId && <p className="text-green-500 mt-2">Your Transaction id: {transactionId}</p>}
         </form>
+
     );
 };
 
