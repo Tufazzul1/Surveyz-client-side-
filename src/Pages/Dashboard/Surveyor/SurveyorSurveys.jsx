@@ -6,6 +6,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet";
 import PagesHeader from "../../../Components/PagesHeader/PagesHeader";
+import Loading from "../../../Components/Loading/Loading";
 
 const SurveyorSurveys = () => {
     const { user } = useAuth();
@@ -23,7 +24,7 @@ const SurveyorSurveys = () => {
     console.log(surveys);
 
     if (isLoading) {
-        return <p>Loading ...........</p>;
+        return <Loading></Loading>;
     }
 
     return (

@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import SectionTitle from "../../../Components/Sectiontitle/SectionTitle";
 import { FaArrowCircleRight } from "react-icons/fa";
+import Loading from "../../../Components/Loading/Loading";
 
 const LatestSurveys = () => {
 
@@ -23,7 +24,7 @@ const LatestSurveys = () => {
     });
 
     if (isLoading) {
-        return <p>Loading.....</p>;
+        return <Loading></Loading>;
     }
 
     if (isError) {

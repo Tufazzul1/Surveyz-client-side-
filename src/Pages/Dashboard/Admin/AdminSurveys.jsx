@@ -3,6 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import PagesHeader from "../../../Components/PagesHeader/PagesHeader";
+import Loading from "../../../Components/Loading/Loading";
 
 const AdminSurveys = () => {
     const axiosSecure = useAxiosSecure();
@@ -45,7 +46,7 @@ const AdminSurveys = () => {
         setCurrentSurvey(null);
     };
 
-    if (isLoading) return <p>loading</p>;
+    if (isLoading) return <Loading></Loading>;
 
     return (
         <div className="p-6">

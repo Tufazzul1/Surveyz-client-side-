@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet";
 import PagesHeader from "../../../Components/PagesHeader/PagesHeader";
+import Loading from "../../../Components/Loading/Loading";
 
 const ResPonseDetails = () => {
     const { id } = useParams();
@@ -18,7 +19,7 @@ const ResPonseDetails = () => {
 
 
     if (isLoading) {
-        return <p>Loading......</p>;
+        return <Loading></Loading>;
     }
 
     return (

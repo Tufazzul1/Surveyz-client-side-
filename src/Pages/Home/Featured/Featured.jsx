@@ -5,6 +5,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAuth from "../../../Hooks/useAuth";
 import SectionTitle from "../../../Components/Sectiontitle/SectionTitle";
 import { FaArrowCircleRight } from "react-icons/fa";
+import Loading from "../../../Components/Loading/Loading";
 
 const Featured = () => {
   const { loading: authLoading } = useAuth();
@@ -25,7 +26,7 @@ const Featured = () => {
   });
 
   if (isLoading || authLoading) {
-    return <p>Loading...</p>;
+    return <Loading></Loading>; 
   }
 
   if (isError) {

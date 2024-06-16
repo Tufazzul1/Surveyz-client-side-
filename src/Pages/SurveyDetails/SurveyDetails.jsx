@@ -19,6 +19,7 @@ import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
 import useSurveyor from "../../Hooks/useSurveyor";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Loading from "../../Components/Loading/Loading";
 
 const SurveyDetails = () => {
     const { id } = useParams();
@@ -108,7 +109,7 @@ const SurveyDetails = () => {
     };
 
     if (isLoading) {
-        return <p>Loading...</p>;
+        return <Loading></Loading>;
     }
 
     const formattedTimestamp = timestamp

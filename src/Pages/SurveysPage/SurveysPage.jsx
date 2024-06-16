@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import PagesHeader from "../../Components/PagesHeader/PagesHeader";
+import Loading from "../../Components/Loading/Loading";
 
 const SurveysPage = () => {
     const [itemsPerPage, setItemsPerPage] = useState(9);
@@ -143,7 +144,7 @@ const SurveysPage = () => {
                 {/* Display surveys */}
                 <div className="grid grid-cols-1 gap-6 mt-8 xl:mt-16 md:grid-cols-3 p-6">
                     {isLoading ? (
-                        <p>Loading</p>
+                        <Loading></Loading>
                     ) : (
                         surveys.map((survey, index) => (
                             <div key={index}>
