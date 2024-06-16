@@ -17,12 +17,16 @@ import AddSurvey from "../Pages/Dashboard/Surveyor/AddSurvey";
 import AdminSurveys from "../Pages/Dashboard/Admin/AdminSurveys";
 import ViewPayments from "../Pages/Dashboard/Admin/ViewPayments";
 import UpdateSurvey from "../Pages/Dashboard/Surveyor/UpdateSurvey";
-import SurveyorDetails from "../Pages/Dashboard/Surveyor/SurveyorDetails";
 import Payment from "../Pages/Pricing/Payment";
 import Vote from "../Pages/SurveyDetails/Vote";
 import PerticipatedSurveys from "../Pages/Dashboard/User/PerticipatedSurveys";
 import CommentedSurveys from "../Pages/Dashboard/ProUser/CommentedSurveys";
 import ReportedSurveys from "../Pages/Dashboard/User/ReportedSurveys";
+import AdminRoutes from "./AdminRoutes";
+import SurveyorRoutes from "./SurveyorRoutes";
+import SurveyorSurveys from "../Pages/Dashboard/Surveyor/SurveyorSurveys";
+import ResPonseDetails from "../Pages/Dashboard/Surveyor/ResPonseDetails";
+import Update from "../Pages/Dashboard/Surveyor/Update";
 
 
 export const router = createBrowserRouter([
@@ -41,12 +45,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/surveyDetails/:id",
-                element: <SurveyDetails></SurveyDetails>,
+                element: <PrivateRoute><SurveyDetails></SurveyDetails></PrivateRoute>,
                 loader: ({ params }) =>fetch(`https://surveyz-server.vercel.app/surveyDetails/${params.id}`),
             },
             {
                 path: "/votes/:id",
-                element: <Vote></Vote>,
+                element: <PrivateRoute><Vote></Vote></PrivateRoute>,
                 loader: ({ params }) =>fetch(`https://surveyz-server.vercel.app/surveyDetails/${params.id}`),
             },
             {
@@ -79,15 +83,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'users',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
             },
             {
                 path: 'serveys',
-                element: <AdminSurveys></AdminSurveys>
+                element: <AdminRoutes><AdminSurveys></AdminSurveys></AdminRoutes>
             },
             {
                 path: 'viewPayments',
-                element: <ViewPayments></ViewPayments>
+                element: <AdminRoutes><ViewPayments></ViewPayments></AdminRoutes>
             },
         ]
     },
@@ -103,15 +107,23 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'addSurvey',
-                element: <AddSurvey></AddSurvey>
+                element: <SurveyorRoutes><AddSurvey></AddSurvey></SurveyorRoutes>
             },
             {
                 path: 'updateSurveys',
-                element: <UpdateSurvey></UpdateSurvey>
+                element: <SurveyorRoutes><UpdateSurvey></UpdateSurvey></SurveyorRoutes>
+            },
+            {
+                path: 'update/:id',
+                element: <SurveyorRoutes><Update></Update></SurveyorRoutes>
             },
             {
                 path: 'surveyorDetails',
-                element: <SurveyorDetails></SurveyorDetails>
+                element: <SurveyorRoutes><SurveyorSurveys></SurveyorSurveys></SurveyorRoutes>
+            },
+            {
+                path: 'response/:id',
+                element: <SurveyorRoutes><ResPonseDetails></ResPonseDetails></SurveyorRoutes>
             }
         ]
     },

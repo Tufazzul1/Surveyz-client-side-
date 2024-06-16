@@ -11,8 +11,8 @@ const LatestSurveys = () => {
     const axiosPublic = useAxiosPublic();
 
     const fetchSurveys = async ({ queryKey }) => {
-        const [, sort] = queryKey;
-        const { data } = await axiosPublic.get(`/allSurveys?sort=${sort}`);
+        const [ sort] = queryKey;
+        const { data } = await axiosPublic.get(`/surveys?sort=${sort}`);
         return data;
     };
 
@@ -37,7 +37,7 @@ const LatestSurveys = () => {
                 subTitle={'Join the conversation with our latest surveys. Voice your opinion, share your thoughts, and see what others think about the most current topics. Your input matters!'}></SectionTitle>
             <div>
                 <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 text-gray-500">
-                    {latest.slice(0, 6).map((survey, index) => (
+                    {latest.map((survey, index) => (
                         <div
                             key={index}
                             className="card h-auto min-h-[270px] bg-white shadow-lg rounded-lg transform transition-all hover:scale-105 hover:shadow-xl"

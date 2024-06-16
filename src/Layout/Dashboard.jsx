@@ -65,7 +65,7 @@ const Dashboard = () => {
                                 <NavLink
                                     className={"flex gap-2"} to={'/dashboard/surveyor/surveyorDetails'}>
                                     <TbListDetails />
-                                     Surveyor Details
+                                     Surveyor Surveys
                                 </NavLink>
                             </li>
                         </ul>

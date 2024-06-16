@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
@@ -6,15 +6,15 @@ import useAuth from "../../../Hooks/useAuth";
 import SectionTitle from "../../../Components/Sectiontitle/SectionTitle";
 import { FaArrowCircleRight } from "react-icons/fa";
 
-const Featured= () => {
+const Featured = () => {
   const { loading: authLoading } = useAuth();
   const axiosPublic = useAxiosPublic();
-
-  const [sort] = useState("voteCount_DESC");
+  
+  const sort = "voteCount_DESC";  
 
   const fetchTopVotes = async ({ queryKey }) => {
-    const [, sort] = queryKey;
-    const { data } = await axiosPublic.get(`/allSurveys?sort=${sort}`);
+    const [sort] = queryKey;
+    const { data } = await axiosPublic.get(`/surveys?sort=${sort}`);
     return data;
   };
 
@@ -34,10 +34,10 @@ const Featured= () => {
 
   return (
     <div className="mb-10">
-        <SectionTitle title={'Featured Surveys'} subTitle={'Explore the top surveys highlighted for you. Join the discussion and make your voice heard on key topics and current trends.'}></SectionTitle>
+      <SectionTitle title={'Featured Surveys'} subTitle={'Explore the top surveys highlighted for you. Join the discussion and make your voice heard on key topics and current trends.'}></SectionTitle>
       <div>
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3">
-          {topVotes.slice(0, 6).map((survey, index) => (
+          {topVotes.map((survey, index) => (
             <div key={index} className="card h-auto text-black min-h-[270px] bg-gray-100">
               <div className="card-body items-center text-center">
                 <h2 className="card-title">{survey.title}</h2>
@@ -54,7 +54,7 @@ const Featured= () => {
       <div className="flex justify-center items-center mt-8">
         <Link
           to="/surveys"
-          className="btn btn-outline btn-info  flex justify-center items-center"
+          className="btn btn-outline btn-info flex justify-center items-center"
         >
           See All Surveys <FaArrowCircleRight className="ml-1" />
         </Link>

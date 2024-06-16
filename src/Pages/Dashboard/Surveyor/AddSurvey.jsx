@@ -86,8 +86,8 @@ const AddSurvey = () => {
                             </div>
                             <select defaultValue={'DEFAULT'}  {...register('category', { required: true })} className="select select-bordered w-full">
                                 <option disabled value="DEFAULT" >Select a Category</option>
-                                <option value="Customer Satisfaction Surveys">Customer Satisfaction Surveys</option>
                                 <option value="Employee Engagement Surveys">Employee Engagement Surveys</option>
+                                <option value="Customer Satisfaction Surveys">Customer Satisfaction Surveys</option>
                                 <option value="Market Research Surveys">Market Research Surveys</option>
                                 <option value="Academic and Educational Surveys">Academic and Educational Surveys</option>
                                 <option value="Healthcare Surveys">Healthcare Surveys</option>
