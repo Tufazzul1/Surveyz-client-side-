@@ -13,6 +13,7 @@ const ResPonseDetails = () => {
         queryKey: ["survey", id],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/vote/${id}`);
+            console.log(data);
             return data;
         },
     });

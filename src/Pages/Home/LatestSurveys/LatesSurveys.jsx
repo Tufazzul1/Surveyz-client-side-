@@ -5,6 +5,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import SectionTitle from "../../../Components/Sectiontitle/SectionTitle";
 import { FaArrowCircleRight } from "react-icons/fa";
 import Loading from "../../../Components/Loading/Loading";
+import { format } from "date-fns";
 
 const LatestSurveys = () => {
 
@@ -46,7 +47,7 @@ const LatestSurveys = () => {
                             <div className="card-body p-6">
                                 <h2 className="card-title text-2xl font-bold mb-2">{survey.title}</h2>
                                 <h2 className="text-xl mb-2">{survey.category}</h2>
-                                <h2 className="mb-2">{survey.endDate}</h2>
+                                <h2>{survey?.timestamp ? format(new Date(survey.timestamp), 'PPpp') : 'N/A'}</h2>
                                 <p className="text-gray-700 mb-4">{survey.description}</p>
                                 <h3 className="text-[#5C4033] text-lg mb-4">
                                     Total Vote Count: <span className="font-semibold">{survey?.voteCount || 0}</span>

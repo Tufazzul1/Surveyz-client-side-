@@ -6,12 +6,13 @@ import useAuth from "../../../Hooks/useAuth";
 import SectionTitle from "../../../Components/Sectiontitle/SectionTitle";
 import { FaArrowCircleRight } from "react-icons/fa";
 import Loading from "../../../Components/Loading/Loading";
+import { useState } from "react";
 
 const Featured = () => {
   const { loading: authLoading } = useAuth();
   const axiosPublic = useAxiosPublic();
   
-  const sort = "voteCount_DESC";  
+  const [sort, setSort] = useState("voteCount_DESC"); 
 
   const fetchTopVotes = async ({ queryKey }) => {
     const [sort] = queryKey;

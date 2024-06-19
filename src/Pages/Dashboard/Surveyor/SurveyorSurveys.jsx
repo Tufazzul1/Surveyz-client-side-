@@ -15,13 +15,13 @@ const SurveyorSurveys = () => {
     const { data: surveys = [], isLoading } = useQuery({
         queryKey: ['surveys', user?.email],
         queryFn: async () => {
-            const { data } = await axiosSecure.get(`/votes/${user?.email}`);
-            console.log(data)
+            const { data } = await axiosSecure.get(`/surveys/${user?.email}`);
+            // console.log(data)
             return data;
         }
     });
 
-    console.log(surveys);
+    // console.log(surveys);
 
     if (isLoading) {
         return <Loading></Loading>;
