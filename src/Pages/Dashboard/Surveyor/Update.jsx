@@ -132,7 +132,7 @@ const Update = () => {
                         required
                     >
                         <option value="" disabled>Select a category</option>
-                        {categories.map((cat, index) => (
+                        {categories?.map((cat, index) => (
                             <option key={index} value={cat}>
                                 {cat}
                             </option>

@@ -146,7 +146,7 @@ const SurveysPage = () => {
                     {isLoading ? (
                         <Loading></Loading>
                     ) : (
-                        surveys.map((survey, index) => (
+                        surveys?.map((survey, index) => (
                             <div key={index}>
                                 <div className="card bg-base-200 border border-blue-400">
                                     <div className="card-body">
@@ -194,7 +194,7 @@ const SurveysPage = () => {
                     </div>
                 </button>
                 {/* Numbers */}
-                {pages.map((btnNum) => (
+                {pages?.map((btnNum) => (
                     <button
                         onClick={() => handlePaginationButton(btnNum)}
                         key={btnNum}

@@ -54,7 +54,7 @@ const UpdateSurvey = () => {
             </tr>
           </thead>
           <tbody>
-            {surveys.map((survey, index) => (
+            {surveys?.map((survey, index) => (
               <tr key={survey._id}>
                 <th>{index + 1}</th>
                 <td>{survey._id}</td>

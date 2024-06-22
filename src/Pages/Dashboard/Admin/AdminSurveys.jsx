@@ -52,7 +52,7 @@ const AdminSurveys = () => {
         <div className="p-6">
             <PagesHeader header={'Manage Survey'}></PagesHeader>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-                {surveys.map((survey) => (
+                {surveys?.map((survey) => (
                     <div key={survey._id} className="bg-white shadow-md rounded-lg p-4">
                         <h3 className="text-xl font-bold mb-2">{survey.title}</h3>
                         <h3 className="text-lg mb-2">{survey.category}</h3>

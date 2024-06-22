@@ -1,19 +1,15 @@
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import Loading from "../../../Components/Loading/Loading";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import useAuth from "../../../Hooks/useAuth";
 import SectionTitle from "../../../Components/Sectiontitle/SectionTitle";
 import { FaArrowCircleRight } from "react-icons/fa";
-import Loading from "../../../Components/Loading/Loading";
-import { useState } from "react";
 
-const Featured = () => {
-  const { loading: authLoading } = useAuth();
+const FeaturedSurvey = () => {
+
+  const [sort] = useState("voteCount_DESC"); 
   const axiosPublic = useAxiosPublic();
-  
-  const [sort, setSort] = useState("voteCount_DESC"); 
-
   const fetchTopVotes = async ({ queryKey }) => {
     const [sort] = queryKey;
     const { data } = await axiosPublic.get(`/surveys?sort=${sort}`);
@@ -26,8 +22,8 @@ const Featured = () => {
     keepPreviousData: true,
   });
 
-  if (isLoading || authLoading) {
-    return <Loading></Loading>; 
+  if (isLoading) {
+    return <Loading></Loading>;
   }
 
   if (isError) {
@@ -39,7 +35,7 @@ const Featured = () => {
       <SectionTitle title={'Featured Surveys'} subTitle={'Explore the top surveys highlighted for you. Join the discussion and make your voice heard on key topics and current trends.'}></SectionTitle>
       <div>
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3">
-          {topVotes.map((survey, index) => (
+          {topVotes?.map((survey, index) => (
             <div key={index} className="card h-auto text-black min-h-[270px] bg-gray-100">
               <div className="card-body items-center text-center">
                 <h2 className="card-title">{survey.title}</h2>
@@ -65,5 +61,7 @@ const Featured = () => {
   );
 };
 
-export default Featured;
+export default FeaturedSurvey;
+
+
 

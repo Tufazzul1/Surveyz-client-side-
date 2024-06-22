@@ -1,6 +1,6 @@
 # # Surveyz
 
-Live link : http://localhost:5000
+Live link : https://surveyz-server.vercel.app
 
 # website Features
 * Create, manage, and participate in surveys.

@@ -35,7 +35,7 @@ const ViewPayments = () => {
                     </thead>
                     <tbody>
                         {
-                            payments.map((payment, index) => <tr key={payment._id}>
+                            payments?.map((payment, index) => <tr key={payment._id}>
                                 <th>{index + 1}</th>
                                 <td>{payment?.name}</td>
                                 <td>{payment?.email}</td>

@@ -99,7 +99,7 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            filteredUsers.map((user, index) => <tr key={user._id}>
+                            filteredUsers?.map((user, index) => <tr key={user._id}>
                                 <th>{index + 1}</th>
                                 <td>
                                     <div className="flex items-center gap-3">
