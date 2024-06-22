@@ -14,7 +14,7 @@ const LatestSurveys = () => {
 
     const fetchSurveys = async ({ queryKey }) => {
         const [ sort] = queryKey;
-        const { data } = await axiosPublic.get(`/surveys?sort=${sort}`);
+        const { data } = await axiosPublic.get(`/latest-surveys?sort=${sort}`);
         return data;
     };
 
@@ -76,3 +76,5 @@ const LatestSurveys = () => {
 };
 
 export default LatestSurveys;
+
+

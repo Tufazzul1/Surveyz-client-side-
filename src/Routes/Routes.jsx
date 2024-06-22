@@ -46,12 +46,12 @@ export const router = createBrowserRouter([
             {
                 path: "/surveyDetails/:id",
                 element: <PrivateRoute><SurveyDetails></SurveyDetails></PrivateRoute>,
-                loader: ({ params }) =>fetch(`https://surveyz-server.vercel.app/surveyDetails/${params.id}`),
+                loader: ({ params }) =>fetch(`http://localhost:5000/surveyDetails/${params.id}`),
             },
             {
                 path: "/votes/:id",
                 element: <PrivateRoute><Vote></Vote></PrivateRoute>,
-                loader: ({ params }) =>fetch(`https://surveyz-server.vercel.app/surveyDetails/${params.id}`),
+                loader: ({ params }) =>fetch(`http://localhost:5000/surveyDetails/${params.id}`),
             },
             {
                 path: "/pricing",
