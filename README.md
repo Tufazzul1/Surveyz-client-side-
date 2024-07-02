@@ -17,7 +17,7 @@ Live link : https://surveyz-server.vercel.app
 # #How to Run the Project
 
 Steps to Run : 
-* Clone the Repository: Clone the client-side code from your GitHub repository.
+* Clone the Repository: Clone the client side code from my GitHub repository.Also have to clone the server side repository.
 * Install Dependencies: Navigate to the project directory and run npm install.
 * Set Up Environment Variables: Create a .env file with necessary environment variables   for API URL and Firebase configuration.
 * Run the Project: Use npm start to run the project locally.
