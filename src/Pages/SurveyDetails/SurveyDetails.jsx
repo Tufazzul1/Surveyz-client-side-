@@ -3,14 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { format } from "date-fns";
 import { Helmet } from 'react-helmet-async';
-import {
-    Button,
-    Dialog,
-    DialogPanel,
-    DialogTitle,
-    Transition,
-    TransitionChild,
-} from '@headlessui/react';
+import {Button,Dialog,DialogPanel,DialogTitle,Transition,TransitionChild,}from'@headlessui/react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";

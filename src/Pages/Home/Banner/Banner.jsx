@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
     return (
-        <div className="hero md:min-h-screen mb-5">
+        <div className="hero md:min-h-[550px] mb-5">
             <div className="hero-content flex-col lg:flex-row-reverse items-center">
                 <div className="w-full lg:w-1/2 flex justify-center">
                     <img src="https://i.ibb.co/CK9NHkf/illustration-02.png" className=" w-full" />
